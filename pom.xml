@@ -46,7 +46,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>jenkins-test</finalName>
+        <finalName>hellojenkins</finalName>
        
     </build>
 </project>
