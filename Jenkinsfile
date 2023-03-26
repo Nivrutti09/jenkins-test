@@ -25,24 +25,11 @@ pipeline {
          
          stage('Deploy') {
             steps {
-                sh 'echo "deploy"'
+                echo 'deploy'
                 }
             
          } 
          
-         stage('Test') {
-            steps {
-                sh 'echo "test"'
-                }
-            
-         } 
-         
-         stage('Release') {
-            steps {
-                 sh 'echo "realease"'
-                }
-            
-         } 
          
         }
      }
