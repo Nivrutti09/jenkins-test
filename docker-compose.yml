@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+    gateway-service:
+        container_name: v-hellojenkins
+        ports:
+            - '8090:8099'
+        image: hellojenkins

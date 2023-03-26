@@ -7,22 +7,30 @@ pipeline {
     }
 
     stages {
-        stage('Build') { 
-            steps {
-               echo 'build'
+        
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
             }
         }
-        stage('Test') { 
+        
+        stage('Build') {
             steps {
-               echo 'test'
-            }
-        }
-        stage('Deploy') { 
-            steps {
-               echo 'deploy'
-            }
+                dir("/home/ubuntu/.jenkins/workspace/pipeline") {
+                sh 'mvn -b clean package'
+                }
+            
+         } 
+         
         }
      }
+    post {
+       always {
+          junit(
+        allowEmptyResults: true,
+        testResults: '*/test-reports/.xml'
+      )
+      }
+   } 
 }
-
-
