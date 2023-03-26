@@ -7,30 +7,20 @@ pipeline {
     }
 
     stages {
-        
-        stage('Initialize'){
-            steps{
-                echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /opt/maven"
+        stage('Build') { 
+            steps {
+               echo 'build'
             }
         }
-        
-        stage('Build') {
+        stage('Test') { 
             steps {
-                dir("/home/ubuntu/.jenkins/workspace/pipeline") {
-                sh 'mvn clean package'
-                }
-            
-         } 
-         
-         stage('Deploy') {
+               echo 'test'
+            }
+        }
+        stage('Deploy') { 
             steps {
-                echo 'deploy'
-                }
-            
-         } 
-         
-         
+               echo 'deploy'
+            }
         }
      }
 }
