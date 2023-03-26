@@ -22,6 +22,24 @@ pipeline {
                 }
             
          } 
+        stage('Deploy') {
+            steps {
+                sh 'echo "testing"'
+                sh 'echo "test done"'
+                }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "testing"'
+                sh 'echo "test done"'
+                }
+        }
+        stage('Release') {
+            steps {
+                sh 'echo "releasing"'
+                sh 'echo "released"'
+                }
+        }
          
         }
      }
