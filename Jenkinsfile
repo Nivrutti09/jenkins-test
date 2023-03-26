@@ -22,25 +22,30 @@ pipeline {
                 }
             
          } 
-        stage('Deploy') {
+         
+         stage('Deploy') {
             steps {
-                sh 'echo "testing"'
-                sh 'echo "test done"'
+                sh 'echo "deploy"'
                 }
-        }
-        stage('Test') {
+            
+         } 
+         
+         stage('Test') {
             steps {
-                sh 'echo "testing"'
-                sh 'echo "test done"'
+                sh 'echo "test"'
                 }
-        }
-        stage('Release') {
+            
+         } 
+         
+         stage('Release') {
             steps {
-                sh 'echo "releasing"'
-                sh 'echo "released"'
+                 sh 'echo "realease"'
                 }
-        }
+            
+         } 
          
         }
      }
 }
+
+
