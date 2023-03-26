@@ -16,37 +16,25 @@ pipeline {
                 dir("/home/ubuntu/.jenkins/workspace/pipeline") {
                 sh 'mvn -B -DskipTests clean package'
                 }
-            }
         }
         stage('Deploy') {
             steps {
                 sh 'echo "testing"'
                 sh 'echo "test done"'
                 }
-            }
         }
         stage('Test') {
             steps {
                 sh 'echo "testing"'
                 sh 'echo "test done"'
                 }
-            }
         }
         stage('Release') {
             steps {
-                sh 'echo "realesing"'
+                sh 'echo "releasing"'
                 sh 'echo "released"'
                 }
-            }
         }
         
      }
-    post {
-       always {
-          junit(
-        allowEmptyResults: true,
-        testResults: '*/test-reports/.xml'
-      )
-      }
-   } 
 }
