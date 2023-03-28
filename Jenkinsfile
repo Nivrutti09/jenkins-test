@@ -17,8 +17,8 @@ pipeline {
         
        stage('Build') {
             steps {
-                dir("/home/ubuntu/.jenkins/workspace/pipeline") {
-                  sh 'mvn -B clean package'
+                dir("/home/ubuntu/.jenkins/workspace/docker-test-pipeline") {
+                  sh 'mvn clean package'
                   sh 'sudo docker build -t hellojenkins .'
                 }
             
@@ -27,7 +27,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                 sh 'sudo docker-compose -p bzplexus-gen up -d' 
+                 sh 'sudo docker-compose -p v-hellojenkins up -d' 
                 }
             
          }  
