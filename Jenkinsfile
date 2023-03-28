@@ -18,8 +18,6 @@ pipeline {
        stage('Build') {
             steps {
                 dir("/home/ubuntu/.jenkins/workspace/pipeline") {
-                  sh 'git fetch adsadsads'    
-                  sh 'git checkout docker-example'
                   sh 'mvn -B clean package'
                   sh 'sudo docker build -t hellojenkins .'
                 }
