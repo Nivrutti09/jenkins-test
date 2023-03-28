@@ -15,22 +15,56 @@ pipeline {
             }
         }
         
-        stage('Build') {
+       stage('Build') {
             steps {
                 dir("/home/ubuntu/.jenkins/workspace/pipeline") {
-                sh 'mvn -b clean package'
+                  sh 'git fetch adsadsads'    
+                  sh 'git checkout docker-example'
+                  sh 'mvn -B clean package'
+                  sh 'sudo docker build -t hellojenkins .'
                 }
             
-         } 
-         
+         }  
         }
+        
+        stage('Deploy') {
+            steps {
+                 sh 'sudo docker-compose -p bzplexus-gen up -d' 
+                }
+            
+         }  
+         
+         stage('Testing') {
+            steps {
+                echo "testing"
+            }
+            
+         } 
+         stage('Release') {
+            steps {
+                echo "released"
+            }
+            
+         } 
      }
     post {
-       always {
-          junit(
-        allowEmptyResults: true,
-        testResults: '*/test-reports/.xml'
-      )
-      }
+        always {  
+              echo 'always'  
+         }  
+         success {  
+               mail bcc: '',  body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Build Success: Project name -> ${env.JOB_NAME}", to: "nivrutti.patil@veracity-india.com";  
+        
+         }  
+         failure {  
+              mail bcc: '',  body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Build Failed: Project name -> ${env.JOB_NAME}", to: "nivrutti.patil@veracity-india.com";  
+        
+         }  
+         unstable {  
+             echo 'This will run only if the run was marked as unstable'  
+         }  
+         changed {  
+             echo 'This will run only if the state of the Pipeline has changed'  
+             echo 'For example, if the Pipeline was previously failing but is now successful'  
+         }  
    } 
 }
