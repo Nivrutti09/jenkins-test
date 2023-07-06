@@ -1,7 +1,7 @@
 #docker build -t ibzplexus-gen .
 FROM tomcat:8-jre8
 
-ADD target/hellojenkins.war /usr/local/tomcat/webapps/
+ADD target/cicd-test.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
