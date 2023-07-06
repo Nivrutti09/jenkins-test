@@ -1,0 +1,13 @@
+#docker-compose up -d
+version: '2'
+
+services:
+
+    verity:
+      image: hellojenkins
+      container_name: v-hellojenkins
+      restart: always
+      build:
+         context: .
+      ports:
+         - "8090:8080"

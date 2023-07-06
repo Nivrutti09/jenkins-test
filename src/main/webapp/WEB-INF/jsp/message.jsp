@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-     <h2 align="center"> Hello ${name}! Jenkins</h2>
+     <h2 align="center"> ${name}!</h2>
 </body>
 </html>
