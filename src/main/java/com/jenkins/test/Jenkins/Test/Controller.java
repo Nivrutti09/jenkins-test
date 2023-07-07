@@ -8,7 +8,7 @@ public class Controller {
 
 	@GetMapping( "/" )
 	public String hello( Model model ) {
-		model.addAttribute( "name", "Hello Jenkins -> Trigger from github commit test" );
+		model.addAttribute( "name", "Github trigger" );
 		return "message";
 	}
 }
