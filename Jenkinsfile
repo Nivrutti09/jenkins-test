@@ -21,7 +21,7 @@ pipeline {
                   sh 'git fetch adsadsads'    
                   sh 'git checkout docker-example'
                   sh 'mvn -B clean package'
-                  sh 'sudo docker build -t hellojenkins .'
+                  sh 'sudo docker build -t cicd-test .'
                 }
             
          }  
@@ -29,7 +29,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                 sh 'sudo docker-compose -p bzplexus-gen up -d' 
+                 sh 'sudo docker-compose -p cicd-test up -d' 
                 }
             
          }  
