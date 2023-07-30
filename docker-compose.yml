@@ -3,7 +3,7 @@ version: '2'
 
 services:
 
-    verity:
+    hellojenkins:
       image: hellojenkins
       container_name: v-hellojenkins
       restart: always
