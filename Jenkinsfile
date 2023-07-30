@@ -19,7 +19,7 @@ pipeline {
             steps {
                 dir("/home/ubuntu/.jenkins/workspace/pipeline") {
                   sh 'mvn -B clean package'
-                  sh 'sudo docker build -t cicd-test .'
+                  sh 'sudo docker build -t hellojenkins .'
                 }
             
          }  
@@ -27,7 +27,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                 sh 'sudo docker-compose -p cicd-test up -d' 
+                 sh 'sudo docker-compose -p v-hellojenkins up -d' 
                 }
             
          }  
